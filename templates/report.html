@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Medical History</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    background-image: linear-gradient(to right, #74ebd5, #9aa8e8);;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+
+  section {
+    padding: 20px;
+    width: 80%; /* Adjusted width for better visibility on a laptop screen */
+  }
+
+  #patient-info, #medical-history, #skin-cancer, #treatment-plan {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  #appearance {
+    margin-top: 10px;
+  }
+
+  footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+  }
+  .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 80px;
+            border-radius: 50px;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+<body>
+  <header>
+    <h1>Patient Medical History</h1>
+  </header>
+
+  <section id="patient-info">
+    <h2>Patient Information</h2>
+    <table id="patient-details">
+      <tr>
+        <th>Name</th>
+        <td>{{session['username']}}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{session['age']}}</td>
+      </tr>
+      </table>
+  </section>
+
+ 
+
+  <section id="skin-cancer">
+    <h2>Skin Cancer Information</h2>
+    <table id="skin-cancer-details">
+      <tr>
+        <th>Type</th>
+        <td>Basal Cell Carcinoma</td>
+      </tr>
+     
+      </table>
+    <p id="appearance">The skin cancer appears as a pearly or waxy bump. It may also look like a flat, scaly, reddish patch. The location is on the patient's nose.</p>
+  </section>
+
+  <section id="treatment-plan">
+    <h2>Image</h2>
+    <p>
+      {% if prediction %}
+        <img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded Image">
+      {% endif %}
+    </p>
+  </section>
+
+  <section id="treatment-plan">
+    <h2>Treatment Plan</h2>
+    <p>The patient will undergo Mohs surgery to remove the skin cancer. After the procedure, the patient will be provided with wound care instructions. Follow-up appointments will be scheduled to monitor the patient's recovery.</p>
+  </section>
+
+
+  <button class="btn" id="download1"><i class="fa fa-download"></i>Download</button>
+</body><script>
+  window.onload = function () {
+   document.getElementById("download1").addEventListener("click", () => {
+       // Reference the entire document for conversion
+       const documentBody = document.body;
+       console.log(documentBody);
+       
+       var opt = {
+           margin: 1,
+           filename: 'report.pdf',
+           image: { type: 'jpeg', quality: 0.98 },
+           html2canvas: { scale: 2 },
+           jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+       };
+       
+       // Convert the entire document to PDF
+       html2pdf().from(documentBody).set(opt).save();
+   });
+}
+</script>
+
+</html>

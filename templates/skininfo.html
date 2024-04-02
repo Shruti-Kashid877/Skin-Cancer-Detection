@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        body,
+        .navbar {
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+            align-items: center;
+            background-color: rgb(31, 30, 30);
+            padding: 0px 10px;
+            position: fixed;
+            width: 100%;
+            top: 0px;
+            /* Adjusted top value based on the height of the navbar */
+            z-index: 999;
+            /* Ensure header appears above navbar */
+        }
+
+        .navbar img {
+            height: 50px;
+            width: auto;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .logout {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .navbar .logout:hover {
+            background-color: #FF5733;
+            color: black;
+        }
+
+        .navbar .links {
+            display: flex;
+            gap: 10px;
+            
+            padding-right: 30px;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('/static/bg5.jpg');
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+    background-color: rgba(69, 70, 71, 0.746);
+    color: #fff;
+    text-align: center;
+    padding: 0.1rem;
+    position: fixed;
+    width: 100%;
+    top: 80px;
+    z-index: 999;
+    transition: background-color 0.3s;
+}
+
+header.scroll {
+    background-color: rgba(69, 70, 71, 0.946);
+}
+
+h1#typing-text {
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: typing 3s steps(40, end), blink-caret 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 30%;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
+}
+
+        main {
+            max-width: 2500px;
+            margin: 200px 40px;
+            /* Adjusted margin to accommodate the fixed header and navbar */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        h4 {
+            color: #555;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .symptoms {
+            margin-bottom: 50px;
+        }
+
+        .symptoms-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .symptom {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .symptom-icon {
+            background-color: #53a6ff;
+            color: #fff;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+
+        }
+
+        .symptom-description {
+            flex: 1;
+        }
+
+        .symptom h3 {
+            color: #2b91ff;
+        }
+
+        .symptom p {
+            color: #555;
+        }
+
+        .line {
+            width: 4px;
+            height: 100px;
+            /* Adjust the height of the line */
+            background-color: #4b4b4b;
+            margin-right: 15px;
+            /* Adjust the margin to create spacing between the line and circles */
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0px;
+            border-radius: 10px;
+            /* Adjust the border-radius for curved corners */
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            /* Border color between rows */
+        }
+
+        th {
+            background-color: #49a0fd;
+            /* Header background color */
+            color: #fff;
+            /* Header text color */
+            border-top-left-radius: 10px;
+            /* Adjust the border-radius for curved corners */
+            border-top-right-radius: 10px;
+            /* Adjust the border-radius for curved corners */
+        }
+
+        td {
+            background-color: #f6f3f3;
+            /* Alternate row background color */
+        }
+
+        td:last-child {
+            border-bottom: none;
+            /* Remove border from the last row */
+        }
+
+        tr:hover td {
+            background-color: #97989a;
+            /* Hover background color */
+            color: #fff;
+            /* Hover text color */
+        }
+    </style>
+</head>
+<script>
+    window.addEventListener('scroll', function () {
+        var header = document.querySelector('header');
+        header.classList.toggle('scroll', window.scrollY > 0);
+    });
+</script>
+<body>
+    <div class="navbar">
+        <a href="#"><img src="/static/web_logo4.jpg" alt="Logo"></a>
+        <div class="links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('aboutus') }}">About Us</a>
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+            
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+        </div>
+    </div>
+    <header>
+        <h1 id="typing-text">Melanoma Skin Cancer</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Introduction to Melanoma Skin Cancer</h2>
+            <p>Melanoma is a type of skin cancer that originates in the melanocytes, the cells responsible for producing
+                pigment. It is the most aggressive form of skin cancer and has the potential to spread to other parts of
+                the body.
+                Detecting melanoma early stages is crucial for successful treatment.<br>
+                Melanoma is often caused by exposure to UV radiation, but genetic factors can also play a role.
+                Individuals with fair skin, a history of severe sunburns, many moles, or a family history of melanoma
+                are at a higher risk.<br>
+                Individuals with fair or light-colored skin are at a higher risk due to reduced melanin, which provides
+                some protection against UV radiation.
+                A history of severe sunburns, especially during childhood, increases the risk of melanoma later in life.
+                Having a large number of moles or unusual moles (dysplastic nevi) can be a risk factor.
+                Regularly monitoring changes in moles is essential.
+                A family history of melanoma or other skin cancers may contribute to an increased risk, suggesting a
+                genetic predisposition.
+                Individuals with weakened immune systems, whether due to medical conditions or immunosuppressive
+                medications, may face an elevated risk.
+                While melanoma can occur at any age, the risk increases with age, particularly in older adults.
+                Melanoma affects both genders, but it is more common in males.</p>
+
+        </section>
+        <hr style="line-height: 20px;">
+
+        <section class="symptoms">
+            <h2>Symptoms of Melanoma</h2>
+            <div class="symptoms-container">
+                <div class="symptom" id="symptom-a">
+                    <div class="symptom-icon">A</div>
+                    <div class="symptom-description">
+                        <h3>Asymmetry</h3>
+                        <p>One half of the mole is different from the other half.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <div class="symptom" id="symptom-b">
+                    <div class="symptom-icon">B</div>
+                    <div class="symptom-description">
+                        <h3>Border Irregularity</h3>
+                        <p>The edges are notched, uneven, or blurred.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <div class="symptom" id="symptom-c">
+                    <div class="symptom-icon">C</div>
+                    <div class="symptom-description">
+                        <h3>Color Changes</h3>
+                        <p>The color is not uniform and may include shades of brown, black, or even red.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <div class="symptom" id="symptom-d">
+                    <div class="symptom-icon">D</div>
+                    <div class="symptom-description">
+                        <h3>Diameter</h3>
+                        <p>Melanomas are often larger in diameter than a pencil eraser.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <div class="symptom" id="symptom-e">
+                    <div class="symptom-icon">E</div>
+                    <div class="symptom-description">
+                        <h3>Evolving</h3>
+                        <p>Any change in size, shape, color, or elevation should be monitored.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="line-height: 20px;"><br>
+        <section>
+            <!-- Your existing content -->
+
+
+            <table>
+                <tr>
+                    <th><b>Prevention Measures</b></th>
+                </tr>
+                <tr>
+                    <td><b>Sun Protection:</b> Encourage the use of sunscreen with a high SPF, wearing protective
+                        clothing, and seeking shade, especially during peak sun hours.</td>
+                </tr>
+                <tr>
+                    <td><b>Regular Skin Checks: </b>Emphasize the importance of regular self-examinations and
+                        professional screenings, especially for individuals with risk factors.</td>
+                </tr>
+                <tr>
+                    <td><b>Avoiding Tanning Beds:</b> Discourage the use of tanning beds, as they significantly increase
+                        the risk of melanoma.</td>
+                </tr>
+                <tr>
+                    <td><b>Educational Campaigns:</b> Promote awareness about melanoma and its risk factors through
+                        educational campaigns, reaching out to communities, schools, and workplaces.</td>
+                </tr>
+            </table>
+        </section><br>
+
+        <section>
+            <div>
+                <a href="{{ url_for('skindetect') }}"><button>Next</button></a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

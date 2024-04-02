@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin cancer Detection</title>
+    <link rel="icon" type="image/jpg" href="/static/web_logo4.jpg" style="border-radius: 50%;">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image:linear-gradient(to right, #74ebd5, #9aa8e8);
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .login-container {
+            background-color: rgb(255, 255, 255);
+            padding: 70px;
+            padding-bottom: 40px;
+            padding-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            display: flex;
+            max-width: 1000px;
+            margin-top: 120px;
+            margin-left: 400px;
+           justify-content: center;
+        }
+
+        .left-column {
+            margin-right: 60px;
+            /* Add margin to separate the columns */
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-left: 40px;
+        }
+
+        .logo1 {
+            width: 400px;
+            height: 300px;
+            border-radius: 8px;
+            margin-top: 50px;
+            padding-right: 40px;
+        }
+
+        h2 {
+            color: #fe7c77;
+            margin-bottom: 20px;
+            margin-left: 125px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .login-button {
+            background-color: #fe7c77;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 40%;
+            margin-left: 125px;
+            font-size: larger;
+        }
+
+        .login-button:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 80px;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+        .radio-container {
+            display: flex;
+            align-items: center;
+            color: rgb(87, 87, 87);
+            margin-left: 10px;
+        }
+
+        .radio-label {
+            margin-left: 20px;
+        }
+        .back{
+            margin-left: 20px;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="back">
+        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+        <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.4" d="M16.19 2H7.82C4.17 2 2 4.17 2 7.81V16.18C2 19.82 4.17 21.99 7.81 21.99H16.18C19.82 21.99 21.99 19.82 21.99 16.18V7.81C22 4.17 19.83 2 16.19 2Z" fill="#292D32"/>
+            <path d="M13.9195 8.48006H8.76945L9.09945 8.15006C9.38945 7.86006 9.38945 7.38006 9.09945 7.09006C8.80945 6.80006 8.32945 6.80006 8.03945 7.09006L6.46945 8.66006C6.17945 8.95006 6.17945 9.43006 6.46945 9.72006L8.03945 11.2901C8.18945 11.4401 8.37945 11.5101 8.56945 11.5101C8.75945 11.5101 8.94945 11.4401 9.09945 11.2901C9.38945 11.0001 9.38945 10.5201 9.09945 10.2301L8.83945 9.97006H13.9195C15.1995 9.97006 16.2495 11.0101 16.2495 12.3001C16.2495 13.5901 15.2094 14.6301 13.9195 14.6301H8.99945C8.58945 14.6301 8.24945 14.9701 8.24945 15.3801C8.24945 15.7901 8.58945 16.1301 8.99945 16.1301H13.9195C16.0295 16.1301 17.7495 14.4101 17.7495 12.3001C17.7495 10.1901 16.0295 8.48006 13.9195 8.48006Z" fill="#292D32"/>
+            </svg></a></div>
+    <div class="login-container">
+        <div class="left-column">
+            <img src="/static/bg3.jpg" alt="Logo" class="logo1">
+            <!-- Replace 'your-logo.png' with the path to your logo -->
+        </div>
+        <div class="right-column">
+            <!-- Replace 'your-logo.png' with the path to your logo -->
+            <div class="left-column">
+        <h2>REGISTER HERE</h2>
+        <form id="loginForm" action="{{ url_for('register')}}" method="post">
+            
+            <input type="text" name="username" id="username" placeholder="Username" >
+            {% if error_username%}
+            <p class="error-message"><svg class="margin8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="20px" height="20px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+           <g>
+               <g>
+                   <path fill="#B0BEC5" d="M64,0C28.656,0,0,28.656,0,64s28.656,64,64,64s64-28.656,64-64S99.344,0,64,0z M64,120
+                       C33.125,120,8,94.875,8,64S33.125,8,64,8s56,25.125,56,56S94.875,120,64,120z"/>
+               </g>
+           </g>
+           <g>
+               <g>
+                   <path fill="#F44336" d="M75.313,64l16.969-16.969c3.125-3.125,3.125-8.195,0-11.313c-3.117-3.125-8.188-3.125-11.313,0L64,52.688
+                       L47.031,35.719c-3.125-3.125-8.195-3.125-11.313,0c-3.125,3.117-3.125,8.188,0,11.313L52.688,64L35.719,80.969
+                       c-3.125,3.125-3.125,8.195,0,11.313c3.117,3.125,8.188,3.125,11.313,0L64,75.313l16.969,16.969c3.125,3.125,8.195,3.125,11.313,0
+                       c3.125-3.117,3.125-8.188,0-11.313L75.313,64z"/>
+               </g>
+           </g>
+           </svg><b style="color:white ;">..  </b>{{ error_username }}</p>
+            {% endif%}
+            <input type="text" name="email" id="email" placeholder="Email" >
+            {% if error_email%}
+            <p class="error-message"><p class="error-message"><svg class="margin8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="20px" height="20px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+           <g>
+               <g>
+                   <path fill="#B0BEC5" d="M64,0C28.656,0,0,28.656,0,64s28.656,64,64,64s64-28.656,64-64S99.344,0,64,0z M64,120
+                       C33.125,120,8,94.875,8,64S33.125,8,64,8s56,25.125,56,56S94.875,120,64,120z"/>
+               </g>
+           </g>
+           <g>
+               <g>
+                   <path fill="#F44336" d="M75.313,64l16.969-16.969c3.125-3.125,3.125-8.195,0-11.313c-3.117-3.125-8.188-3.125-11.313,0L64,52.688
+                       L47.031,35.719c-3.125-3.125-8.195-3.125-11.313,0c-3.125,3.117-3.125,8.188,0,11.313L52.688,64L35.719,80.969
+                       c-3.125,3.125-3.125,8.195,0,11.313c3.117,3.125,8.188,3.125,11.313,0L64,75.313l16.969,16.969c3.125,3.125,8.195,3.125,11.313,0
+                       c3.125-3.117,3.125-8.188,0-11.313L75.313,64z"/>
+               </g>
+           </g>
+           </svg><b style="color:white ;">..  </b>{{ error_email }}</p>
+            {% endif%}
+            <input type="password" name="password" id="password" placeholder="Password" >
+            {% if error_password%}
+            <p class="error-message"><p class="error-message"><svg class="margin8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="20px" height="20px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+           <g>
+               <g>
+                   <path fill="#B0BEC5" d="M64,0C28.656,0,0,28.656,0,64s28.656,64,64,64s64-28.656,64-64S99.344,0,64,0z M64,120
+                       C33.125,120,8,94.875,8,64S33.125,8,64,8s56,25.125,56,56S94.875,120,64,120z"/>
+               </g>
+           </g>
+           <g>
+               <g>
+                   <path fill="#F44336" d="M75.313,64l16.969-16.969c3.125-3.125,3.125-8.195,0-11.313c-3.117-3.125-8.188-3.125-11.313,0L64,52.688
+                       L47.031,35.719c-3.125-3.125-8.195-3.125-11.313,0c-3.125,3.117-3.125,8.188,0,11.313L52.688,64L35.719,80.969
+                       c-3.125,3.125-3.125,8.195,0,11.313c3.117,3.125,8.188,3.125,11.313,0L64,75.313l16.969,16.969c3.125,3.125,8.195,3.125,11.313,0
+                       c3.125-3.117,3.125-8.188,0-11.313L75.313,64z"/>
+               </g>
+           </g>
+           </svg><b style="color:white ;">..  </b>{{ error_password }}</p>
+            {% endif%}
+            
+            <div class="radio-container">
+                <label for="age">Gender:</label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="male">
+                    Male
+                </label>
+    
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="female">
+                    Female
+                </label>
+            </div>
+            {% if error_gender%}
+            <p class="error-message"><p class="error-message"><svg class="margin8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="20px" height="20px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+           <g>
+               <g>
+                   <path fill="#B0BEC5" d="M64,0C28.656,0,0,28.656,0,64s28.656,64,64,64s64-28.656,64-64S99.344,0,64,0z M64,120
+                       C33.125,120,8,94.875,8,64S33.125,8,64,8s56,25.125,56,56S94.875,120,64,120z"/>
+               </g>
+           </g>
+           <g>
+               <g>
+                   <path fill="#F44336" d="M75.313,64l16.969-16.969c3.125-3.125,3.125-8.195,0-11.313c-3.117-3.125-8.188-3.125-11.313,0L64,52.688
+                       L47.031,35.719c-3.125-3.125-8.195-3.125-11.313,0c-3.125,3.117-3.125,8.188,0,11.313L52.688,64L35.719,80.969
+                       c-3.125,3.125-3.125,8.195,0,11.313c3.117,3.125,8.188,3.125,11.313,0L64,75.313l16.969,16.969c3.125,3.125,8.195,3.125,11.313,0
+                       c3.125-3.117,3.125-8.188,0-11.313L75.313,64z"/>
+               </g>
+           </g>
+           </svg><b style="color:white ;">..  </b>{{ error_gender }}</p>
+            {% endif%}
+            <input type="text" name="age" id="age" placeholder="Age" >
+            {% if error_age%}
+            <p class="error-message"><p class="error-message"><svg class="margin8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="20px" height="20px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+           <g>
+               <g>
+                   <path fill="#B0BEC5" d="M64,0C28.656,0,0,28.656,0,64s28.656,64,64,64s64-28.656,64-64S99.344,0,64,0z M64,120
+                       C33.125,120,8,94.875,8,64S33.125,8,64,8s56,25.125,56,56S94.875,120,64,120z"/>
+               </g>
+           </g>
+           <g>
+               <g>
+                   <path fill="#F44336" d="M75.313,64l16.969-16.969c3.125-3.125,3.125-8.195,0-11.313c-3.117-3.125-8.188-3.125-11.313,0L64,52.688
+                       L47.031,35.719c-3.125-3.125-8.195-3.125-11.313,0c-3.125,3.117-3.125,8.188,0,11.313L52.688,64L35.719,80.969
+                       c-3.125,3.125-3.125,8.195,0,11.313c3.117,3.125,8.188,3.125,11.313,0L64,75.313l16.969,16.969c3.125,3.125,8.195,3.125,11.313,0
+                       c3.125-3.117,3.125-8.188,0-11.313L75.313,64z"/>
+               </g>
+           </g>
+           </svg><b style="color:white ;">..  </b>{{ error_age }}</p>
+            {% endif%}
+            <h3 class="signup-link"> {{msg}} </h3>
+            <p class="error-message" id="errorMessage"></p>
+            <b><button type="submit" class="login-button">REGISTER</button></b>
+        </form>
+        <a href="{{ url_for('login') }}" class="signup-link">Alredy have an account? Login here -></a>
+    </div>
+    </div></div>
+
+    
+</body>
+</html>
